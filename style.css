@@ -35,11 +35,10 @@ header .container {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-    color: #333;
+.logo img {
+    height: 50px; /* ปรับความสูงของโลโก้ได้ที่นี่ */
+    width: auto;
+    vertical-align: middle;
 }
 
 nav ul {
@@ -196,12 +195,15 @@ footer {
     header .container {
         flex-direction: column;
     }
+    
+    .logo img {
+        margin-bottom: 1rem;
+    }
 
     nav ul {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-top: 1rem;
     }
 
     nav li {
