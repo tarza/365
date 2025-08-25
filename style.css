@@ -1,4 +1,92 @@
-/* ----- Video Landing Page Styles ----- */
+/* ----- General Styles & Original Shop Styles ----- */
+/* (สไตล์สำหรับหน้าสินค้าและส่วนอื่นๆ ของเว็บ) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif; /* แนะนำให้เปลี่ยนเป็นฟอนต์ที่ชอบ */
+}
+
+body {
+    background-color: #f4f4f4; /* สีพื้นหลังอ่อนๆ สำหรับหน้าสินค้า */
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+.container {
+    padding: 2rem 5%;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.product-card p {
+    padding: 0 1rem 1rem;
+    color: #777;
+}
+
+
+/* ----- Video Landing Page Styles (ปรับปรุงใหม่) ----- */
+/* (สไตล์สำหรับหน้าวิดีโอ index.html โดยเฉพาะ) */
+
 .video-background {
     position: fixed;
     top: 0;
@@ -7,6 +95,7 @@
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    background-color: black; /* สีพื้นหลังสำรองหากวิดีโอไม่โหลด */
 }
 
 .video-background iframe {
@@ -14,21 +103,11 @@
     top: 50%;
     left: 50%;
     width: 100vw;
-    height: 100vh;
+    height: 56.25vw; /* อัตราส่วน 16:9 สำหรับวิดีโอแนวนอน */
+    min-width: 177.77vh; /* อัตราส่วน 16:9 */
+    min-height: 100vh;
     transform: translate(-50%, -50%);
-    pointer-events: none; /* ทำให้คลิกทะลุวิดีโอไปโดนปุ่มได้ */
-}
-
-@media (min-aspect-ratio: 16/9) {
-  .video-background iframe {
-    height: 56.25vw; /* 16:9 ratio */
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .video-background iframe {
-    width: 177.78vh; /* 16:9 ratio */
-  }
+    pointer-events: none;
 }
 
 .video-overlay {
@@ -46,20 +125,24 @@
     z-index: 1;
     color: white;
     text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ทำให้เนื้อหาอยู่กลางจอแนวตั้ง */
 }
 
 .content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 .content p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
 .enter-button {
@@ -67,10 +150,12 @@
     padding: 12px 30px;
     border: 2px solid white;
     color: white;
+    background-color: transparent;
     text-decoration: none;
     font-size: 1.1rem;
     border-radius: 50px;
     transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 }
 
 .enter-button:hover {
@@ -80,6 +165,9 @@
 
 @media (max-width: 768px) {
     .content h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+    .content p {
+        font-size: 1rem;
     }
 }
