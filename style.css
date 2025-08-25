@@ -32,9 +32,9 @@ header .container {
     align-items: center;
 }
 
-/* === โค้ดสำคัญ: แก้ไขขนาดโลโก้ (ใช้กับทุกหน้า) === */
+/* === โค้ดสำคัญ: ปรับขนาดโลโก้ให้เล็กลงอีก === */
 .logo img {
-    max-width: 150px; /* ปรับขนาดตามที่เลือก */
+    max-width: 120px; /* <<< ปรับขนาดลงอีก */
     height: auto;
     display: block;
 }
@@ -91,11 +91,10 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* === โค้ดสำคัญ: แก้ไขสัดส่วนรูปสินค้า === */
 .product-card img {
     width: 100%;
     height: 250px;
-    object-fit: contain; /* เปลี่ยนเป็น contain ตามที่เลือก */
+    object-fit: contain;
 }
 
 .product-card-content {
@@ -174,6 +173,7 @@ body.video-landing {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 1;
+    width: 90%; /* เพิ่มความกว้างเพื่อให้ข้อความไม่ติดขอบจอ */
 }
 
 .content h1 {
@@ -249,8 +249,37 @@ body.video-landing {
     background-color: #555;
 }
 
+/* =================================
+   Media Queries (สำหรับ Responsive Design)
+   ================================= */
+
+/* สำหรับจอแท็บเล็ตและคอมพิวเตอร์ */
 @media (min-width: 768px) {
     .content-section {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /* เปลี่ยนหน้า contact เป็น 2 คอลัมน์ */
+    }
+}
+
+/* === โค้ดสำคัญ: สำหรับจอมือถือโดยเฉพาะ === */
+@media (max-width: 767px) {
+    
+    /* ปรับขนาดตัวอักษรหน้า Index บนมือถือ */
+    .content h1 {
+        font-size: 2.5rem; /* ลดขนาด H1 ลง */
+    }
+
+    .content p {
+        font-size: 1rem; /* ลดขนาด p ลง */
+    }
+
+    /* ปรับขนาดปุ่มบนมือถือ */
+    .enter-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* ปรับเมนูบนมือถือ (ตัวอย่าง: อาจจะต้องปรับเพิ่มในอนาคต) */
+    header nav ul li {
+        margin-left: 10px;
     }
 }
