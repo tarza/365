@@ -1,60 +1,179 @@
 /* =================================
+   การตั้งค่าทั่วไปสำหรับทั้งเว็บ
+   ================================= */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* =================================
+   ส่วน Header และ Navigation Bar
+   ================================= */
+header {
+    background: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* === โค้ดสำคัญ: แก้ไขขนาดโลโก้ (ใช้กับทุกหน้า) === */
+.logo img {
+    max-width: 180px;
+    height: auto;
+    display: block;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header nav a.active {
+    color: #007bff;
+}
+
+
+/* =================================
+   ส่วน Main Content และ Section ต่างๆ
+   ================================= */
+main {
+    padding: 2rem 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* =================================
+   ส่วนแสดงผลสินค้า (Product Grid)
+   ================================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* === โค้ดสำคัญ: แก้ไขสัดส่วนรูปสินค้า === */
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding: 1rem;
+}
+
+.product-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+/* =================================
+   ส่วน Footer
+   ================================= */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+/* =================================
    สไตล์สำหรับหน้า Landing Page (index.html)
    ================================= */
-
-/* กำหนดให้ body ไม่มีระยะขอบ และซ่อนส่วนที่เกิน */
 body.video-landing {
     margin: 0;
     padding: 0;
     overflow: hidden;
     font-family: sans-serif;
-    color: white; /* กำหนดสีตัวอักษรหลักเป็นสีขาว */
+    color: white;
 }
 
-/* คอนเทนเนอร์สำหรับวิดีโอพื้นหลัง */
 .video-background {
-    position: fixed; /* ทำให้วิดีโออยู่กับที่ ไม่เลื่อนตาม */
+    position: fixed;
     top: 50%;
     left: 50%;
-    width: 100vw; /* กว้างเต็มหน้าจอ (Viewport Width) */
-    height: 100vh; /* สูงเต็มหน้าจอ (Viewport Height) */
-    transform: translate(-50%, -50%); /* จัดให้อยู่กึ่งกลางจอ */
-    z-index: -2; /* ทำให้วิดีโออยู่หลังสุด */
-    pointer-events: none; /* ทำให้คลิกทะลุวิดีโอได้ */
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    pointer-events: none;
 }
 
-/* iframe ของ YouTube */
 .video-background iframe {
-    /* เทคนิคทำให้วิดีโอเต็มจอและรักษาสัดส่วน 16:9 */
     width: 100vw;
-    height: 56.25vw; /* 100/16*9 = 56.25 */
+    height: 56.25vw;
     min-height: 100vh;
-    min-width: 177.77vh; /* 100/9*16 = 177.77 */
+    min-width: 177.77vh;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* เลเยอร์สีดำโปร่งแสงทับวิดีโอ */
 .video-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* สีดำโปร่งแสง 50% */
-    z-index: -1; /* อยู่ระหว่างวิดีโอกับเนื้อหา */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
 
-/* เนื้อหาที่แสดงทับวิดีโอ */
 .content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1; /* อยู่หน้าสุด */
+    z-index: 1;
 }
 
 .content h1 {
@@ -68,7 +187,6 @@ body.video-landing {
     margin-bottom: 2rem;
 }
 
-/* ปุ่มเข้าสู่เว็บไซต์ */
 .enter-button {
     display: inline-block;
     padding: 12px 30px;
@@ -83,4 +201,56 @@ body.video-landing {
 .enter-button:hover {
     background-color: #ddd;
     color: #000;
+}
+
+/* =================================
+   สไตล์สำหรับหน้า Contact (contact.html)
+   ================================= */
+.content-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.contact-info {
+    line-height: 1.8;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contact-form button:hover {
+    background-color: #555;
+}
+
+@media (min-width: 768px) {
+    .content-section {
+        grid-template-columns: 1fr 1fr;
+    }
 }
