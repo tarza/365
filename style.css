@@ -1,177 +1,127 @@
-/* ----- General Styles & Original Shop Styles ----- */
-/* (สไตล์สำหรับหน้าสินค้าและส่วนอื่นๆ ของเว็บ) */
-
-* {
+/* =================================
+   การตั้งค่าทั่วไปสำหรับทั้งเว็บ
+   ================================= */
+body {
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
-
-body {
+    line-height: 1.6;
     background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    text-decoration: none;
-    color: #555;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #000;
 }
 
 .container {
-    padding: 2rem 5%;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
 }
 
-.products {
+/* =================================
+   ส่วน Header และ Navigation Bar
+   ================================= */
+header {
+    background: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* จัดโลโก้และเมนูให้อยู่คนละฝั่ง */
+    align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+}
+
+/* === โค้ดสำคัญ: แก้ไขขนาดโลโก้ (ใช้กับทุกหน้า) === */
+.logo img {
+    max-width: 180px;  /* <<< คุณสามารถปรับขนาดโลโก้ได้ที่นี่ */
+    height: auto;      /* รักษาสัดส่วนภาพอัตโนมัติ */
+    display: block;    /* แก้ปัญหาช่องว่างใต้ภาพ */
+}
+/* ============================================= */
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header nav a.active {
+    color: #007bff; /* สีสำหรับเมนูที่กำลังใช้งาน */
+}
+
+
+/* =================================
+   ส่วน Main Content และ Section ต่างๆ
+   ================================= */
+main {
+    padding: 2rem 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* =================================
+   ส่วนแสดงผลสินค้า (Product Grid)
+   ================================= */
+.product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .product-card {
-    background-color: white;
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     overflow: hidden;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* === โค้ดสำคัญ: แก้ไขสัดส่วนรูปสินค้า === */
 .product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: 100%;       /* ทำให้ภาพมีความกว้างเต็มกรอบการ์ด */
+    height: 250px;     /* กำหนดความสูงคงที่ */
+    object-fit: cover; /* ทำให้ภาพเต็มพื้นที่โดยไม่เสียสัดส่วน */
+}
+/* ==================================== */
+
+.product-card-content {
+    padding: 1rem;
 }
 
 .product-card h3 {
-    padding: 1rem;
-    font-size: 1.2rem;
-}
-
-.product-card p {
-    padding: 0 1rem 1rem;
-    color: #777;
-}
-
-
-/* ----- Video Landing Page Styles (แยกสไตล์แล้ว) ----- */
-/* (สไตล์สำหรับหน้าวิดีโอ index.html เท่านั้น) */
-
-body.video-landing {
-    background-color: black; /* สีพื้นหลังเฉพาะหน้าวิดีโอ */
-}
-
-.video-landing .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.video-landing .video-background iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 56.25vw;
-    min-width: 177.77vh;
-    min-height: 100vh;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-}
-
-.video-landing .video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-}
-
-.video-landing .content {
-    position: relative;
-    z-index: 1;
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.video-landing .content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-}
-
-.video-landing .content p {
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
-
-.video-landing .enter-button {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid white;
-    color: white;
-    background-color: transparent;
-    text-decoration: none;
+    margin-top: 0;
     font-size: 1.1rem;
-    border-radius: 50px;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
 }
 
-.video-landing .enter-button:hover {
-    background-color: white;
-    color: black;
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e67e22;
 }
 
-@media (max-width: 768px) {
-    .video-landing .content h1 {
-        font-size: 2.5rem;
-    }
-    .video-landing .content p {
-        font-size: 1rem;
-    }
+/* =================================
+   ส่วน Footer
+   ================================= */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
 }
-
