@@ -1,12 +1,31 @@
 /* =================================
-   การตั้งค่าทั่วไปสำหรับทั้งเว็บ
+   Global Settings
    ================================= */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #e67e22;
+    --dark-color: #333;
+    --light-color: #f4f4f4;
+    --border-color: #ddd;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Kanit', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -18,12 +37,16 @@ body {
 }
 
 /* =================================
-   ส่วน Header และ Navigation Bar
+   Header & Navigation
    ================================= */
 header {
     background: #fff;
     padding: 1rem 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 header .container {
@@ -32,9 +55,8 @@ header .container {
     align-items: center;
 }
 
-/* === โค้ดสำคัญ: ปรับขนาดโลโก้ให้เล็กลงอีก === */
 .logo img {
-    max-width: 120px; /* <<< ปรับขนาดลงอีก */
+    max-width: 120px;
     height: auto;
     display: block;
 }
@@ -43,26 +65,31 @@ header nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 header nav ul li {
-    display: inline-block;
-    margin-left: 20px;
+    margin: 0;
 }
 
 header nav a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-header nav a.active {
-    color: #007bff;
+header nav a:hover,
+header nav a.active,
+header nav a:focus {
+    color: var(--primary-color);
+    outline: none;
 }
-
 
 /* =================================
-   ส่วน Main Content และ Section ต่างๆ
+   Main Content
    ================================= */
 main {
     padding: 2rem 0;
@@ -71,10 +98,11 @@ main {
 h1 {
     text-align: center;
     margin-bottom: 2rem;
+    font-weight: 600;
 }
 
 /* =================================
-   ส่วนแสดงผลสินค้า (Product Grid)
+   Product Grid
    ================================= */
 .product-grid {
     display: grid;
@@ -84,16 +112,23 @@ h1 {
 
 .product-card {
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
 .product-card img {
     width: 100%;
-    height: 250px;
+    height: auto;
+    max-height: 250px;
     object-fit: contain;
 }
 
@@ -109,14 +144,14 @@ h1 {
 .product-price {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #e67e22;
+    color: var(--secondary-color);
 }
 
 /* =================================
-   ส่วน Footer
+   Footer
    ================================= */
 footer {
-    background: #333;
+    background: var(--dark-color);
     color: #fff;
     text-align: center;
     padding: 1.5rem 0;
@@ -124,13 +159,12 @@ footer {
 }
 
 /* =================================
-   สไตล์สำหรับหน้า Landing Page (index.html)
+   Landing Page (index.html)
    ================================= */
 body.video-landing {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: sans-serif;
     color: white;
 }
 
@@ -173,7 +207,7 @@ body.video-landing {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 1;
-    width: 90%; /* เพิ่มความกว้างเพื่อให้ข้อความไม่ติดขอบจอ */
+    width: 90%;
 }
 
 .content h1 {
@@ -191,24 +225,27 @@ body.video-landing {
     display: inline-block;
     padding: 12px 30px;
     background-color: #fff;
-    color: #333;
+    color: var(--dark-color);
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.enter-button:hover {
+.enter-button:hover,
+.enter-button:focus {
     background-color: #ddd;
     color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    outline: none;
 }
 
 /* =================================
-   สไตล์สำหรับหน้า Contact (contact.html)
+   Contact Page (contact.html)
    ================================= */
 .content-section {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 2rem;
     align-items: start;
     margin-top: 2rem;
@@ -230,56 +267,66 @@ body.video-landing {
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 .contact-form button {
     display: block;
     width: 100%;
     padding: 0.8rem;
-    background-color: #333;
+    background-color: var(--dark-color);
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
+.contact-form button:hover,
+.contact-form button:focus {
     background-color: #555;
+    outline: none;
 }
 
 /* =================================
-   Media Queries (สำหรับ Responsive Design)
+   Media Queries (Mobile-first)
    ================================= */
-
-/* สำหรับจอแท็บเล็ตและคอมพิวเตอร์ */
 @media (min-width: 768px) {
     .content-section {
-        grid-template-columns: 1fr 1fr; /* เปลี่ยนหน้า contact เป็น 2 คอลัมน์ */
+        grid-template-columns: 1fr 1fr;
     }
-}
 
-/* === โค้ดสำคัญ: สำหรับจอมือถือโดยเฉพาะ === */
-@media (max-width: 767px) {
-    
-    /* ปรับขนาดตัวอักษรหน้า Index บนมือถือ */
     .content h1 {
-        font-size: 2.5rem; /* ลดขนาด H1 ลง */
+        font-size: 3.5rem;
     }
 
     .content p {
-        font-size: 1rem; /* ลดขนาด p ลง */
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    header .container {
+        flex-direction: column;
+        gap: 1rem;
     }
 
-    /* ปรับขนาดปุ่มบนมือถือ */
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
     .enter-button {
         padding: 10px 20px;
         font-size: 0.9rem;
-    }
-
-    /* ปรับเมนูบนมือถือ (ตัวอย่าง: อาจจะต้องปรับเพิ่มในอนาคต) */
-    header nav ul li {
-        margin-left: 10px;
     }
 }
