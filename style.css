@@ -34,7 +34,7 @@ header .container {
 
 /* === โค้ดสำคัญ: แก้ไขขนาดโลโก้ (ใช้กับทุกหน้า) === */
 .logo img {
-    max-width: 180px;
+    max-width: 150px; /* ปรับขนาดตามที่เลือก */
     height: auto;
     display: block;
 }
@@ -95,7 +95,7 @@ h1 {
 .product-card img {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain; /* เปลี่ยนเป็น contain ตามที่เลือก */
 }
 
 .product-card-content {
