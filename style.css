@@ -5,11 +5,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif; /* แนะนำให้เปลี่ยนเป็นฟอนต์ที่ชอบ */
+    font-family: sans-serif;
 }
 
 body {
-    background-color: #f4f4f4; /* สีพื้นหลังอ่อนๆ สำหรับหน้าสินค้า */
+    background-color: #f4f4f4;
     color: #333;
 }
 
@@ -84,10 +84,14 @@ nav a:hover {
 }
 
 
-/* ----- Video Landing Page Styles (ปรับปรุงใหม่) ----- */
-/* (สไตล์สำหรับหน้าวิดีโอ index.html โดยเฉพาะ) */
+/* ----- Video Landing Page Styles (แยกสไตล์แล้ว) ----- */
+/* (สไตล์สำหรับหน้าวิดีโอ index.html เท่านั้น) */
 
-.video-background {
+body.video-landing {
+    background-color: black; /* สีพื้นหลังเฉพาะหน้าวิดีโอ */
+}
+
+.video-landing .video-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -95,32 +99,31 @@ nav a:hover {
     height: 100%;
     z-index: -1;
     overflow: hidden;
-    background-color: black; /* สีพื้นหลังสำรองหากวิดีโอไม่โหลด */
 }
 
-.video-background iframe {
+.video-landing .video-background iframe {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
-    height: 56.25vw; /* อัตราส่วน 16:9 สำหรับวิดีโอแนวนอน */
-    min-width: 177.77vh; /* อัตราส่วน 16:9 */
+    height: 56.25vw;
+    min-width: 177.77vh;
     min-height: 100vh;
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
 
-.video-overlay {
+.video-landing .video-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* สีดำโปร่งแสงทับวิดีโอ */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 0;
 }
 
-.content {
+.video-landing .content {
     position: relative;
     z-index: 1;
     color: white;
@@ -129,23 +132,23 @@ nav a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* ทำให้เนื้อหาอยู่กลางจอแนวตั้ง */
+    height: 100vh;
 }
 
-.content h1 {
+.video-landing .content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
-.content p {
+.video-landing .content p {
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-.enter-button {
+.video-landing .enter-button {
     display: inline-block;
     padding: 12px 30px;
     border: 2px solid white;
@@ -158,16 +161,17 @@ nav a:hover {
     cursor: pointer;
 }
 
-.enter-button:hover {
+.video-landing .enter-button:hover {
     background-color: white;
     color: black;
 }
 
 @media (max-width: 768px) {
-    .content h1 {
+    .video-landing .content h1 {
         font-size: 2.5rem;
     }
-    .content p {
+    .video-landing .content p {
         font-size: 1rem;
     }
 }
+
