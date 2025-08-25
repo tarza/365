@@ -1,181 +1,332 @@
-/* ==============================
-   Reset & Base
-============================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* =================================
+   Global Settings
+   ================================= */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #e67e22;
+    --dark-color: #333;
+    --light-color: #f4f4f4;
+    --border-color: #ddd;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: #fff;
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ลิงก์ */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  list-style: none;
-}
-
-/* ==============================
-   Header & Navbar
-============================== */
-header {
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #e5e5e5;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.navbar .logo img {
-  max-height: 50px;
-  width: auto;
-}
-
-.navbar nav ul {
-  display: flex;
-  gap: 20px;
-}
-
-.navbar nav ul li a {
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-  transition: color 0.3s;
-}
-
-.navbar nav ul li a:hover {
-  color: #f9a825;
-}
-
-/* ==============================
-   Containers (ทุกหน้า)
-============================== */
 .container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
 }
 
-/* ==============================
-   Shop Page (สินค้า)
-============================== */
-.shop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+/* =================================
+   Header & Navigation
+   ================================= */
+header {
+    background: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 120px;
+    height: auto;
+    display: block;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active,
+header nav a:focus {
+    color: var(--primary-color);
+    outline: none;
+}
+
+/* =================================
+   Main Content
+   ================================= */
+main {
+    padding: 2rem 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* =================================
+   Product Grid
+   ================================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .product-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-  background: #fff;
-  transition: box-shadow 0.3s;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
 .product-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+}
+
+.product-card-content {
+    padding: 1rem;
 }
 
 .product-card h3 {
-  font-size: 18px;
-  margin: 10px 0 5px;
+    margin-top: 0;
+    font-size: 1.1rem;
 }
 
-.product-card p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 8px;
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
 }
 
-.product-card .price {
-  font-size: 16px;
-  font-weight: bold;
-  color: #f9a825;
-}
-
-/* ==============================
-   About / News / Contact
-============================== */
-.page-title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.page-content {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.8;
-  text-align: justify;
-}
-
-/* ==============================
+/* =================================
    Footer
-============================== */
+   ================================= */
 footer {
-  background: #222;
-  color: #ddd;
-  padding: 20px 0;
-  text-align: center;
-  margin-top: 40px;
+    background: var(--dark-color);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
 }
 
-footer p {
-  font-size: 14px;
+/* =================================
+   Landing Page (index.html)
+   ================================= */
+body.video-landing {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
 }
 
-/* ==============================
-   Responsive
-============================== */
-@media (max-width: 768px) {
-  .navbar nav ul {
-    gap: 10px;
-  }
-  .navbar nav ul li a {
-    font-size: 14px;
-  }
-  .page-title {
-    font-size: 22px;
-  }
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    pointer-events: none;
 }
 
-@media (max-width: 480px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .navbar nav ul {
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
-  }
+.video-background iframe {
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.77vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    width: 90%;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.enter-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #fff;
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enter-button:hover,
+.enter-button:focus {
+    background-color: #ddd;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    outline: none;
+}
+
+/* =================================
+   Contact Page (contact.html)
+   ================================= */
+.content-section {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.contact-info {
+    line-height: 1.8;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.contact-form button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--dark-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+    background-color: #555;
+    outline: none;
+}
+
+/* =================================
+   Media Queries (Mobile-first)
+   ================================= */
+@media (min-width: 768px) {
+    .content-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .content h1 {
+        font-size: 3.5rem;
+    }
+
+    .content p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .enter-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
